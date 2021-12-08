@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Rol</h3>
+            <h3 class="page__heading">REGISTRAR COLOR</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -49,6 +49,12 @@
                                     <label for="" class="col-form-label col-md-4"></label>
                                     <div class="col-md-8">
                                     </div>
+                            </div>
+
+                          <a href="/colorProducto" class="btn btn-secondary" tabindex="5">Cancelar</a>
+                          <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+                        </form>
+
                             </div>
                         </div>
                     </div>
