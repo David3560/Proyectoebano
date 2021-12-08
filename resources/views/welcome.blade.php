@@ -45,10 +45,10 @@
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
             @else
             <a >.</a>
-                <a href="{{ route('login') }}" class="btn btn-warning">Entrar</a>
+                <a href="{{ route('login') }}" class="btn btn-info">Entrar</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="btn btn-warning">Registrarme</a>
+                    <a href="{{ route('register') }}" class="btn btn-info">Registrarme</a>
                 @endif
             @endauth
         </div>
