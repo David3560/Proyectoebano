@@ -49,7 +49,7 @@ Route::get('clientes/pdf', [App\Http\Controllers\ClienteController::class, 'pdf'
 
 Route::get('material/pdf', [App\Http\Controllers\MaterialController::class, 'pdf'])->name('material.pdf');
 
-Route::get('colorProducto/pdf', [App\Http\Controllers\colorProductoController::class, 'pdf'])->name('colorProducto.pdf');
+Route::get('colorProducto/pdf', [App\Http\Controllers\ColorproductoController::class, 'pdf'])->name('colorProducto.pdf');
 
 Route::get('catalogo/pdf', [App\Http\Controllers\CatalogoController::class, 'pdf'])->name('catalogo.pdf');
 
@@ -60,9 +60,9 @@ Route::get('producto/pdf', [App\Http\Controllers\ProductoController::class, 'pdf
 
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 
-Route::resource('tipoProducto', 'App\Http\Controllers\tipoProductoController')->middleware('auth');
+Route::resource('tipoProducto', 'App\Http\Controllers\TipoproductoController')->middleware('auth');
 
-Route::resource('colorProducto', 'App\Http\Controllers\colorProductoController')->middleware('auth');
+Route::resource('colorProducto', 'App\Http\Controllers\ColorproductoController')->middleware('auth');
 
 Route::resource('material', 'App\Http\Controllers\MaterialController')->middleware('auth');
 
