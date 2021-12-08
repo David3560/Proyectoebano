@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\colorProducto;
+use App\Models\Colorproducto;
 
 
 use Barryvdh\DomPDF\Facade as PDF;
@@ -25,13 +25,13 @@ class colorProductoController extends Controller
      */
     public function index()
     {
-        $colorProducto = colorProducto::all();
+        $colorProducto = Colorproducto::all();
         return view('colorProducto.index')->with('colorProducto',$colorProducto);
     }
 
     public function pdf()
     {
-        $colorProducto = colorProducto::all();
+        $colorProducto = Colorproducto::all();
 
         $pdf = PDF::loadView('colorProducto.pdf', ['colorProducto'=>$colorProducto]);
 
@@ -61,7 +61,7 @@ class colorProductoController extends Controller
             'nombreColor' => 'required|max:20|alpha|unique:colorproductos,colorProducto',
         ], ['required'=>'campo requerido'], ['unique'=>'este valor ya existe en la base de datos']);
 
-        $colorProducto = new colorProducto();
+        $colorProducto = new Colorproducto();
         $colorProducto->colorProducto = $request->get('nombreColor');
 
 
@@ -88,7 +88,7 @@ class colorProductoController extends Controller
      */
     public function edit($idColorProducto)
     {
-        $colorProducto = colorProducto::find($idColorProducto);
+        $colorProducto = Colorproducto::find($idColorProducto);
         return view('colorProducto.edit')->with('colorProducto',$colorProducto);
     }
 
@@ -101,7 +101,7 @@ class colorProductoController extends Controller
      */
     public function update(Request $request, $idColorProducto)
     {
-        $colorProducto = colorProducto::find($idColorProducto);
+        $colorProducto = Colorproducto::find($idColorProducto);
 
         $colorProducto->colorProducto = $request->get('nombreColor');
 
@@ -117,7 +117,7 @@ class colorProductoController extends Controller
      */
     public function destroy($idColorProducto)
     {
-        $colorProducto = colorProducto::find($idColorProducto);
+        $colorProducto = Colorproducto::find($idColorProducto);
         $colorProducto->delete();
         return redirect('/colorProducto');
     }
