@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\empleado;
+use App\Models\Empleado;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -25,8 +25,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $User = empleado::all();
-        $empleado = empleado::all();
+        $User = Empleado::all();
+        $empleado = Empleado::all();
         return view('empleado.index')->with('empleado',$empleado);
     }
 
@@ -43,7 +43,7 @@ class EmpleadoController extends Controller
 
     public function pdf()
     {
-        $empleado = empleado::all();
+        $empleado = Empleado::all();
 
         $pdf = PDF::loadView('empleado.pdf', ['empleado'=>$empleado]);
 
@@ -101,7 +101,7 @@ class EmpleadoController extends Controller
     public function edit($idEmpleado)
     {
         $usuario = user::all();
-        $empleado = empleado::find($idEmpleado);
+        $empleado = Empleado::find($idEmpleado);
         return view('empleado.edit')->with('empleado',$empleado)->with('usuario',$usuario);
     }
 
@@ -123,7 +123,7 @@ class EmpleadoController extends Controller
 
         ], ['required'=>'Campo requerido', 'unique'=>'Este valor ya existe en la base de datos']);
 
-        $empleado = empleado::find($idEmpleado);
+        $empleado = Empleado::find($idEmpleado);
 
         $empleado->nombreEmpleado = $request->get('nombreEmpleado');
         $empleado->documentoEmpleado = $request->get('documentoEmpleado');
@@ -143,7 +143,7 @@ class EmpleadoController extends Controller
      */
     public function destroy($idEmpleado)
     {
-        $empleado = empleado::find($idEmpleado);
+        $empleado = Empleado::find($idEmpleado);
         $empleado->delete();
         return redirect('/empleado');
     }
