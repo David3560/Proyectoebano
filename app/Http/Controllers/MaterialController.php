@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\material;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
 use Barryvdh\DomPDF\Facade as PDF;
@@ -23,7 +23,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $material = material::all();
+        $material = Material::all();
         return view('material.index')->with('material',$material);
     }
 
@@ -62,7 +62,7 @@ class MaterialController extends Controller
 
         ], ['required'=>'Campo requerido', 'unique'=>'Este valor ya existe en la base de datos']);
 
-        $material = new material();
+        $material = new Material();
         $material->nombreMaterial = $request->get('nombreMaterial');
         $material->descripcionMaterial = $request->get('descripcionMaterial');
         $material->costoMaterial = $request->get('costoMaterial');
@@ -91,7 +91,7 @@ class MaterialController extends Controller
      */
     public function edit($id)
     {
-        $material = material::find($id);
+        $material = Material::find($id);
         return view('material.edit')->with('material',$material);
     }
 
@@ -104,7 +104,7 @@ class MaterialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $material = material::find($id);
+        $material = Material::find($id);
 
         $material->nombreMaterial = $request->get('nombreMaterial');
         $material->descripcionMaterial = $request->get('descripcionMaterial');
@@ -122,7 +122,7 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
-        $material = material::find($id);
+        $material = Material::find($id);
         $material->delete();
         return redirect('/material');
     }
