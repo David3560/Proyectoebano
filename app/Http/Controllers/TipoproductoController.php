@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tipoProducto;
+use App\Models\Tipoproducto;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -22,7 +22,7 @@ class tipoProductoController extends Controller
      */
     public function index()
     {
-        $tipoProducto = tipoProducto::all();
+        $tipoProducto = Tipoproducto::all();
         return view('tipoProducto.index')->with('tipoProducto',$tipoProducto);
     }
 
@@ -56,7 +56,7 @@ class tipoProductoController extends Controller
     {
 
 
-        $tipoProducto = new tipoProducto();
+        $tipoProducto = new Tipoproducto();
         $tipoProducto->tipoProducto = $request->get('tipoDeProducto');
 
         $tipoProducto->save();
@@ -82,7 +82,7 @@ class tipoProductoController extends Controller
      */
     public function edit($id)
     {
-        $tipoProducto = tipoProducto::find($id);
+        $tipoProducto = Tipoproducto::find($id);
         return view('tipoProducto.edit')->with('tipoProducto',$tipoProducto);
     }
 
@@ -95,7 +95,7 @@ class tipoProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tipoProducto = tipoProducto::find($id);
+        $tipoProducto = Tipoproducto::find($id);
 
         $tipoProducto->tipoProducto = $request->get('tipoDeProducto');
 
@@ -111,7 +111,7 @@ class tipoProductoController extends Controller
      */
     public function destroy($id)
     {
-        $tipoProducto = tipoProducto::find($id);
+        $tipoProducto = Tipoproducto::find($id);
         $tipoProducto->delete();
         return redirect('/tipoProducto');
     }
